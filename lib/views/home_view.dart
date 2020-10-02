@@ -1,32 +1,33 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo2/controllers/menu_controller.dart';
 import 'package:get/get.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends GetView<MenuController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Farfor'),
       ),
-      body: GridView.count(
-        // Create a grid with 2 columns. If you change the scrollDirection to
-        // horizontal, this produces 2 rows.
-        crossAxisCount: 2,
-        // Generate 100 widgets that display their index in the List.
-        children: List.generate(100, (index) {
-          return GestureDetector(
-            onTap: () {
-              Get.toNamed("/category/id");
-            },
-            child: Center(
-              child: Text(
-                'Item $index',
-                style: Theme.of(context).textTheme.headline5,
-              ),
+      body: Obx(
+        () {
+          if (!controller.categoriesLoaded.value) {
+            return Text('loading');
+          }
+
+          return GetBuilder<MenuController>(
+            builder: ($) => GridView.builder(
+              itemCount: $.categories.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+              itemBuilder: (context, index) => GestureDetector(
+                  onTap: () {
+                    Get.toNamed("/category/${$.categories[index].slug}");
+                  },
+                  child: Container(child: Image.network($.categories[index].image))),
             ),
           );
-        }),
+        },
       ),
     );
   }

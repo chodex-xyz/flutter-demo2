@@ -35,6 +35,9 @@ dependencies:
   # проигрывание анимаций
   flare_flutter:
 
+  dio: ^3.0.10
+  dio_cookie_manager: ^1.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
