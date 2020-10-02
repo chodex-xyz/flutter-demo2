@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo2/views/home_view.dart';
+import 'package:flutter_demo2/views/splash_view.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -12,12 +14,17 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Farfor'),
-        ),
-        body: Text('hi'),
-      ),
+      initialRoute: '/',
+      getPages: [
+        GetPage(name: '/', page: () => SplashView()),
+        GetPage(name: '/home', page: () => HomeView()),
+      ],
+      // home: Scaffold(
+      //   appBar: AppBar(
+      //     title: Text('Farfor'),
+      //   ),
+      //   body: Text('hi'),
+      // ),
     );
   }
 }
