@@ -6,6 +6,7 @@ import 'package:flutter_demo2/views/basket_view.dart';
 import 'package:flutter_demo2/views/category_view.dart';
 import 'package:flutter_demo2/views/home_view.dart';
 import 'package:flutter_demo2/views/order_view.dart';
+import 'package:flutter_demo2/views/signin_view.dart';
 import 'package:flutter_demo2/views/splash_view.dart';
 import 'package:get/get.dart';
 
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
       initialBinding: InitialBinding(),
       getPages: [
         GetPage(name: '/', page: () => SplashView()),
+        GetPage(name: '/signin', page: () => SigninView()),
         GetPage(name: '/home', page: () => HomeView()),
         GetPage(name: '/category/:category', page: () => CategoryView()),
         GetPage(name: '/basket', page: () => BasketView()),

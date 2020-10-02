@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo2/controllers/basket_controller.dart';
 import 'package:flutter_demo2/controllers/category_controller.dart';
 import 'package:get/get.dart';
 
@@ -36,6 +37,7 @@ class CategoryView extends GetView<CategoryController> {
                               Text($.category.products[index].name),
                               RaisedButton(
                                 onPressed: () {
+                                  BasketController.to.handleBasketAdd();
                                   Get.snackbar(
                                     ':)',
                                     'Товар добавлен в корзину',
