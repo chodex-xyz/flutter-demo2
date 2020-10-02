@@ -14,7 +14,9 @@ class HomeView extends GetView<MenuController> {
       body: Obx(
         () {
           if (!controller.categoriesLoaded.value) {
-            return Text('loading');
+            return Center(
+              child: CircularProgressIndicator(),
+            );
           }
 
           return GetBuilder<MenuController>(

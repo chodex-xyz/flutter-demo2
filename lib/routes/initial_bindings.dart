@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_demo2/controllers/auth_controller.dart';
+import 'package:flutter_demo2/controllers/category_controller.dart';
 import 'package:flutter_demo2/controllers/menu_controller.dart';
 import 'package:flutter_demo2/data/repositories/menu_repository.dart';
 import 'package:flutter_demo2/services/http_client.dart';
@@ -17,5 +18,6 @@ class InitialBinding implements Bindings {
       () => MenuRepositoryImpl(Get.find<HttpClient>()),
     );
     Get.lazyPut<MenuController>(() => MenuController(Get.find<MenuRepository>()));
+    Get.lazyPut<CategoryController>(() => CategoryController(Get.find<MenuRepository>()));
   }
 }
