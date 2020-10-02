@@ -1,6 +1,5 @@
-import 'package:flutter_demo2/models/category_list_model.dart';
-import 'package:flutter_demo2/repositories/menu_repository.dart';
-
+import 'package:flutter_demo2/data/models/category_list_model.dart';
+import 'package:flutter_demo2/data/repositories/menu_repository.dart';
 import 'package:get/get.dart';
 
 class MenuController extends GetxController {

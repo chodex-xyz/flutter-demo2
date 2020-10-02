@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo2/controllers/menu_controller.dart';
+import 'package:flutter_demo2/data/models/category_list_model.dart';
 import 'package:get/get.dart';
 
 class HomeView extends GetView<MenuController> {
@@ -20,14 +21,30 @@ class HomeView extends GetView<MenuController> {
             builder: ($) => GridView.builder(
               itemCount: $.categories.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-              itemBuilder: (context, index) => GestureDetector(
-                  onTap: () {
-                    Get.toNamed("/category/${$.categories[index].slug}");
-                  },
-                  child: Container(child: Image.network($.categories[index].image))),
+              itemBuilder: (context, index) => _category($.categories[index]),
             ),
           );
         },
+      ),
+    );
+  }
+
+  Widget _category(CategoryListModel category) {
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed("/category/${category.slug}");
+      },
+      child: Stack(
+        children: [
+          Image.network(category.image),
+          Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Text(
+              category.name,
+              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20),
+            ),
+          )
+        ],
       ),
     );
   }

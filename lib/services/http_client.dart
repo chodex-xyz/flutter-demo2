@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_demo2/core/exceptions/server_exception.dart';
+import 'package:flutter_demo2/core/urls.dart';
 import 'package:meta/meta.dart';
 
 abstract class HttpClient {
@@ -22,8 +23,8 @@ class HttpClientImpl implements HttpClient {
   void _initApiClient() {
     // var cookieJar = CookieJar();
     // dio.interceptors.add(CookieManager(cookieJar));
-    _dio.options.baseUrl = "https://api.frfrstaging.ru/v3/6faa1960-0f60-44c2-8e31-9918f2179c64/ufa";
-    _dio.options.connectTimeout = 5000; //5s
+    _dio.options.baseUrl = URLs.baseUrl;
+    _dio.options.connectTimeout = 30000; //30s
     _dio.options.receiveTimeout = 3000;
   }
 

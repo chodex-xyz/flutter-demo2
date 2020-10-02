@@ -1,4 +1,5 @@
-import 'package:flutter_demo2/models/category_list_model.dart';
+import 'package:flutter_demo2/core/urls.dart';
+import 'package:flutter_demo2/data/models/category_list_model.dart';
 import 'package:flutter_demo2/services/http_client.dart';
 
 abstract class MenuRepository {
@@ -12,9 +13,7 @@ class MenuRepositoryImpl extends MenuRepository {
 
   @override
   Future<List<CategoryListModel>> getCategoryList() async {
-    final String categoriesEndpoint = '/categories/';
-
-    final response = await _client.get(categoriesEndpoint);
+    final response = await _client.get(URLs.categories);
     return (response as List).map<CategoryListModel>((json) => CategoryListModel.fromJson(json)).toList();
   }
 }
