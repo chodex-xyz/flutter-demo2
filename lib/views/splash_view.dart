@@ -6,7 +6,8 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: FlareActor("assets/cosmos.flr", alignment: Alignment.center, fit: BoxFit.contain, animation: "Untitled"),
+      child:
+          FlareActor("assets/animation.flr", alignment: Alignment.center, fit: BoxFit.contain, animation: "Untitled"),
     );
   }
 }
