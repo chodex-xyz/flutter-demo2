@@ -13,6 +13,13 @@ class CategoryView extends GetView<CategoryController> {
               appBar: AppBar(
                 title: Text($.category.name),
               ),
+              floatingActionButton: FloatingActionButton(
+                onPressed: () {
+                  Get.offAllNamed('/basket');
+                },
+                child: Icon(Icons.shopping_basket),
+                backgroundColor: Colors.green,
+              ),
               body: ListView.builder(
                   itemCount: $.category.products.length,
                   itemBuilder: (context, index) {
