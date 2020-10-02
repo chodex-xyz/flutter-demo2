@@ -16,7 +16,33 @@ class CategoryView extends GetView<CategoryController> {
               body: ListView.builder(
                   itemCount: $.category.products.length,
                   itemBuilder: (context, index) {
-                    return ListTile(title: Text($.category.products[index].name));
+                    return Row(
+                      children: [
+                        Container(
+                          child: Image.network($.category.products[index].image),
+                          height: 100,
+                          width: 140,
+                        ),
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Text($.category.products[index].name),
+                              RaisedButton(
+                                onPressed: () {
+                                  Get.snackbar(
+                                    ':)',
+                                    'Товар добавлен в корзину',
+                                    colorText: Colors.white,
+                                    backgroundColor: Colors.green,
+                                  );
+                                },
+                                child: Text('Хочу'),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    );
                   }),
             )
           : Center(
