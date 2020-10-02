@@ -13,6 +13,7 @@ class CategoryModel {
 }
 
 class ProductModel {
+  int productId;
   String image;
   String name;
 
@@ -21,6 +22,7 @@ class ProductModel {
   ProductModel.fromJson(Map<String, dynamic> json) {
     this.image = json['image'];
     this.name = json['name'];
+    this.productId = json['modifications'][0]['id'];
   }
 
   Map<String, dynamic> toJson() => {'image': image, 'name': name};

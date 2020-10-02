@@ -9,8 +9,8 @@ class BasketController extends GetxController {
   BasketRepository _basketRepository;
   BasketController(this._basketRepository);
 
-  handleBasketAdd() async {
-    await _basketRepository.addProduct();
+  handleBasketAdd(int productId) async {
+    await _basketRepository.addProduct(productId);
   }
 
   handleGetBasket() async {

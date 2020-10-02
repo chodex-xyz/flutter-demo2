@@ -20,6 +20,7 @@ class SigninView extends GetView<AuthController> {
               ),
               TextFormField(
                 decoration: InputDecoration(hintText: "Password"),
+                obscureText: true,
                 controller: controller.passwordController,
               ),
               RaisedButton(

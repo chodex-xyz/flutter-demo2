@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo2/controllers/basket_controller.dart';
 import 'package:flutter_demo2/controllers/category_controller.dart';
+import 'package:flutter_demo2/data/models/category_model.dart';
 import 'package:get/get.dart';
 
 class CategoryView extends GetView<CategoryController> {
@@ -24,39 +25,43 @@ class CategoryView extends GetView<CategoryController> {
               body: ListView.builder(
                   itemCount: $.category.products.length,
                   itemBuilder: (context, index) {
-                    return Row(
-                      children: [
-                        Container(
-                          child: Image.network($.category.products[index].image),
-                          height: 100,
-                          width: 140,
-                        ),
-                        Expanded(
-                          child: Column(
-                            children: [
-                              Text($.category.products[index].name),
-                              RaisedButton(
-                                onPressed: () {
-                                  BasketController.to.handleBasketAdd();
-                                  Get.snackbar(
-                                    ':)',
-                                    'Товар добавлен в корзину',
-                                    colorText: Colors.white,
-                                    backgroundColor: Colors.green,
-                                  );
-                                },
-                                child: Text('Хочу'),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    );
+                    return _product($.category.products[index]);
                   }),
             )
           : Center(
               child: CircularProgressIndicator(),
             ),
+    );
+  }
+
+  _product(ProductModel product) {
+    return Row(
+      children: [
+        Container(
+          child: Image.network(product.image),
+          height: 100,
+          width: 140,
+        ),
+        Expanded(
+          child: Column(
+            children: [
+              Text(product.name),
+              RaisedButton(
+                onPressed: () {
+                  BasketController.to.handleBasketAdd(product.productId);
+                  Get.snackbar(
+                    ':)',
+                    'Товар добавлен в корзину',
+                    colorText: Colors.white,
+                    backgroundColor: Colors.green,
+                  );
+                },
+                child: Text('Хочу'),
+              )
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

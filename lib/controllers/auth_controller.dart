@@ -19,7 +19,7 @@ class AuthController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    Future.delayed(const Duration(milliseconds: 100), () {
+    Future.delayed(const Duration(milliseconds: 4000), () {
       Get.offAllNamed('/home');
     });
   }
