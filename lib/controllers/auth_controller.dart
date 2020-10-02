@@ -32,7 +32,7 @@ class AuthController extends GetxController {
   handleSignIn() async {
     try {
       await _authRepository.signIn(phoneController.text.trim(), passwordController.text.trim());
-      Get.offAllNamed('/home');
+      Get.offAllNamed('/basket');
     } catch (e) {
       print(e);
       Get.snackbar('Ошибка', e.toString());

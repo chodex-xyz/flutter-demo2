@@ -5,4 +5,5 @@ class URLs {
   static const authMe = '$baseUrl/auth/me/';
   static const basket = '$baseUrl/basket/';
   static const basketAdd = 'https://api.frfrstaging.ru/v2/basket/add-product/';
+  static const basketCheckout = 'https://api.frfrstaging.ru/v2/basket/order-checkout/city/1/mobile/';
 }

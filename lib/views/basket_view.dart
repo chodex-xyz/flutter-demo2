@@ -26,8 +26,8 @@ class BasketView extends GetView<BasketController> {
               ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print('Заказ оформлен');
+        onPressed: () async {
+          await BasketController.to.handlerOrder();
           Get.offAllNamed('/order/123');
         },
         child: Icon(Icons.shopping_basket),

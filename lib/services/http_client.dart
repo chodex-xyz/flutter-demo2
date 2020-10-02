@@ -3,6 +3,7 @@ import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:flutter_demo2/core/exceptions/server_exception.dart';
 import 'package:flutter_demo2/core/urls.dart';
+import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 
 abstract class HttpClient {
@@ -72,9 +73,9 @@ class HttpClientImpl implements HttpClient {
     } on DioError catch (e) {
       print('[API Dio Helper - POST] Connection Exception => ' + e.message);
 
-      // if (e.response.statusCode == 401) {
-      //   Modular.to.pushReplacementNamed(Routers.userLogin);
-      // }
+      if (e.response.statusCode == 401) {
+        Get.toNamed("/signin");
+      }
 
       if (e?.response?.data != null) throw Exception(e.response.data);
 

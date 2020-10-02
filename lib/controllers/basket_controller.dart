@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_demo2/data/models/basket_model.dart';
-import 'package:flutter_demo2/data/repositories/auth_repository.dart';
 import 'package:flutter_demo2/data/repositories/basket_repository.dart';
 import 'package:get/get.dart';
 
@@ -20,5 +18,10 @@ class BasketController extends GetxController {
     print("BASKET");
     print(basket);
     update();
+  }
+
+  handlerOrder() async {
+    await _basketRepository.checkout();
+    print('HANDLE ORDER');
   }
 }
