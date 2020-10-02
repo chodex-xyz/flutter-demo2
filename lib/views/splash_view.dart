@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new FlareActor("assets/cosmos.flr", alignment: Alignment.center, fit: BoxFit.contain, animation: "Untitled");
+    return Container(
+      child: FlareActor("assets/cosmos.flr", alignment: Alignment.center, fit: BoxFit.contain, animation: "Untitled"),
+    );
   }
 }
