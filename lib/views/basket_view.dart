@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_demo2/controllers/auth_controller.dart';
 import 'package:flutter_demo2/controllers/basket_controller.dart';
+import 'package:flutter_demo2/data/models/basket_model.dart';
 import 'package:get/get.dart';
 
 class BasketView extends GetView<BasketController> {
@@ -18,27 +19,45 @@ class BasketView extends GetView<BasketController> {
             ? ListView.builder(
                 itemCount: $.basket.items.length,
                 itemBuilder: (context, index) {
-                  return Row(
-                    children: [
-                      // Container(
-                      //   child: Image.network($.category.products[index].image),
-                      //   height: 100,
-                      //   width: 140,
-                      // ),
-                      Expanded(
-                        child: Column(
-                          children: [
-                            Text($.basket.items[index].title),
-                          ],
-                        ),
-                      ),
-                    ],
-                  );
+                  return _basketItem($.basket.items[index]);
                 })
             : Center(
                 child: CircularProgressIndicator(),
               ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print('Заказ оформлен');
+          Get.offAllNamed('/order/123');
+        },
+        child: Icon(Icons.shopping_basket),
+        backgroundColor: Colors.green,
+      ),
+    );
+  }
+
+  _basketItem(BasketItemModel item) {
+    return Row(
+      children: [
+        Container(
+          child: Image.network(item.image),
+          height: 100,
+          width: 140,
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(item.title),
+                Text("${item.price.toString()} рублей"),
+                Text("${item.quantity.toString()} шт"),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
